@@ -26,10 +26,9 @@ class Student(models.Model):
 
 class Room(models.Model):
     room_no=models.CharField(max_length=50)
-    hostel_id=models.ForeignKey(Hostel, on_delete=models.CASCADE)
+    hostel=models.ForeignKey(Hostel, on_delete=models.CASCADE)
     created_on=models.DateField(auto_now=True)
     updated_on=models.DateField(auto_now=True)
-
 
 class Staff(models.Model):
     name=models.CharField(max_length=50)
