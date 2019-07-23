@@ -20,6 +20,7 @@ class Student(models.Model):
     phone=models.CharField(max_length=15, null=True)
     created_on=models.DateField(auto_now=True)
     updated_on=models.DateField(auto_now=True)
+    department = models.CharField(max_length=60)
 
     def __str__(self):
         return self.name
@@ -29,6 +30,9 @@ class Room(models.Model):
     hostel=models.ForeignKey(Hostel, on_delete=models.CASCADE)
     created_on=models.DateField(auto_now=True)
     updated_on=models.DateField(auto_now=True)
+
+    def __str__(self):
+        return str(self.hostel.hostel_name + '->'+ self.room_no)
 
 class Staff(models.Model):
     name=models.CharField(max_length=50)
@@ -58,4 +62,5 @@ class HostelStaff(models.Model):
     hostel=models.ForeignKey(Hostel, on_delete=models.CASCADE)
     staff=models.ForeignKey(Staff, on_delete=models.CASCADE)
     is_active=models.BooleanField()
+
 
