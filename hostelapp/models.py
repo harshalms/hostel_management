@@ -32,7 +32,7 @@ class Room(models.Model):
     updated_on=models.DateField(auto_now=True)
 
     def __str__(self):
-        return str(self.hostel.hostel_name + '->'+ self.room_no)
+        return str(self.hostel.hostel_name + ' -> '+ self.room_no)
 
 class Staff(models.Model):
     name=models.CharField(max_length=50)
@@ -41,6 +41,9 @@ class Staff(models.Model):
     email=models.EmailField(max_length=100, default='')
     created_on=models.DateField(auto_now=True)
     updated_on=models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Mess(models.Model):
@@ -62,5 +65,9 @@ class HostelStaff(models.Model):
     hostel=models.ForeignKey(Hostel, on_delete=models.CASCADE)
     staff=models.ForeignKey(Staff, on_delete=models.CASCADE)
     is_active=models.BooleanField()
+
+    def __str__(self):
+        return str(self.hostel.hostel_name + ' -> '+ self.staff.name)
+
 
 

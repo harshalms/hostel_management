@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import os
-from hostelapp.models import Hostel
-from hostelapp.models import Student
-from hostelapp.models import Room
-from hostelapp.models import Staff
-from hostelapp.models import Mess
-from hostelapp.models import StudentRoom
+# from hostelapp.models import Hostel
+# from hostelapp.models import Student
+# from hostelapp.models import Room
+# from hostelapp.models import Staff
+# from hostelapp.models import Mess
+# from hostelapp.models import StudentRoom
+from hostelapp.models import *
 
 # Create your views here.
 
@@ -38,10 +39,11 @@ def student(request):
             'mail': i.email,
             'contact': i.phone,
             'created': i.created_on,
-            'updated': i.updated_on
+            'updated': i.updated_on,
+            'dept': i.department
         })
     print(pupil)
-    return render(request, '.html', {'data1':pupil})
+    return render(request, 'student.html', {'data1':pupil})
 
 
 def mess(request):
